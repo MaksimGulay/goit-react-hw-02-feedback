@@ -1,14 +1,5 @@
-// import { type } from '@testing-library/user-event/dist/type';
 import { Component } from 'react';
-// import { StateExample } from '../components/StateExample/StateExample';
-
-// export const App = () => {
-//   return (
-//     <div>
-//       <StateExample />
-//     </div>
-//   );
-// };
+import { Statistics } from './Statistics/statistics';
 
 export class App extends Component {
   state = {
@@ -25,14 +16,23 @@ export class App extends Component {
     });
   };
 
+  
   render() {
+    const { good, neutral, bad } = this.state;
+    const countTotalFeedback = good + neutral + bad;
+    const countGoodFeedback = good
+    const countPositiveFeedbackPercentage = (countGoodFeedback / countTotalFeedback) * 100 || 0;
     return (
       <div>
-        <button onClick={() => this.handleX('good')}>
-          {this.state.good}Good
-        </button>
-        <button onClick={() => this.handleX('bad')}>Bad</button>
-        <button onClick={() => this.handleX('neutral')}>Neutral</button>
+        <h1>Please leave feedback</h1>
+
+        <div>
+          <button onClick={() => this.handleX('good')}>Good</button>
+          <button onClick={() => this.handleX('neutral')}>Neutral</button>
+          <button onClick={() => this.handleX('bad')}>Bad</button>
+        </div>
+        <h2>Statistics</h2>
+        <Statistics good={good} neutral={neutral} bad={bad} total={countTotalFeedback} positive={countPositiveFeedbackPercentage}/>
       </div>
     );
   }
