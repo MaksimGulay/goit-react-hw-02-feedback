@@ -35,7 +35,7 @@ export class App extends Component {
         </Section>
 
         <Section title="Statistics">
-          {countGoodFeedback > 0 ? (
+          {countTotalFeedback > 0 ? (
             <Statistics
               good={good}
               neutral={neutral}
