@@ -1,7 +1,9 @@
+import { Heading1 } from './section-style';
+
 export const Section = ({ title, children }) => {
   return (
     <section>
-      <h2>{title}</h2>
+      <Heading1>{title}</Heading1>
       {children}
     </section>
   );
